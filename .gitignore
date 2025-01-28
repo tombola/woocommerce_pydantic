@@ -8,3 +8,9 @@ wheels/
 
 # Virtual environments
 .venv
+
+# Editable installs of dependencies for debugging
+/dependencies
+
+.env
+.env.tests
