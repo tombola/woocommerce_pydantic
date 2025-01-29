@@ -1,14 +1,14 @@
 [project]
 name = "woocommerce-pydantic"
 version = "0.1.0"
-description = "Add your description here"
+description = "Pydantic models for WooCommerce API responses"
 readme = "README.md"
 authors = [
     { name = "tombola", email = "tombola@github" }
 ]
 requires-python = ">=3.9"
 dependencies = [
-    "pydantic>=2.10.6",
+    "pydantic[email]>=2.10.6",
     "pytest>=8.3.4",
     "python-dotenv>=1.0.1",
     "woocommerce>=3.0.0",
@@ -23,13 +23,14 @@ select = ["ALL"]
 ignore = ["D212", "D203", "D102", "D105"]
 
 [tool.ruff.per-file-ignores]
-"test_*" = ["S101"]
+"test_*" = ["S101", "PLR2004"]
 "responses.py" = ["D101"]
 "resources.py" = ["D101", "E501"]
 
 
 [dependency-groups]
 dev = [
+    "responses>=0.25.6",
     "ruff>=0.9.3",
 ]
 

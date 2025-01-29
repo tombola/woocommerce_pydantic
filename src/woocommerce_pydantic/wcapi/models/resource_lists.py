@@ -7,145 +7,145 @@ Attributes:
 
 """
 
-from pydantic import BaseModel
+from pydantic import RootModel
 
 from woocommerce_pydantic.wcapi.models import resources
 
 
-class ShopCouponList(BaseModel):
-    __root__: list[resources.ShopCoupon]
+class ShopCouponList(RootModel[list[resources.ShopCoupon]]):
+    pass
 
 
-class CustomerDownloadList(BaseModel):
-    __root__: list[resources.CustomerDownload]
+class CustomerDownloadList(RootModel[list[resources.CustomerDownload]]):
+    pass
 
 
-class CustomerList(BaseModel):
-    __root__: list[resources.Customer]
+class CustomerList(RootModel[list[resources.Customer]]):
+    pass
 
 
-class OrderNoteList(BaseModel):
-    __root__: list[resources.OrderNote]
+class OrderNoteList(RootModel[list[resources.OrderNote]]):
+    pass
 
 
-class ShopOrderRefundList(BaseModel):
-    __root__: list[resources.ShopOrderRefund]
+class ShopOrderRefundList(RootModel[list[resources.ShopOrderRefund]]):
+    pass
 
 
-class ShopOrderList(BaseModel):
-    __root__: list[resources.ShopOrder]
+class ShopOrderList(RootModel[list[resources.ShopOrder]]):
+    pass
 
 
-class ProductAttributeTermList(BaseModel):
-    __root__: list[resources.ProductAttributeTerm]
+class ProductAttributeTermList(RootModel[list[resources.ProductAttributeTerm]]):
+    pass
 
 
-class ProductAttributeList(BaseModel):
-    __root__: list[resources.ProductAttribute]
+class ProductAttributeList(RootModel[list[resources.ProductAttribute]]):
+    pass
 
 
-class ProductCatList(BaseModel):
-    __root__: list[resources.ProductCat]
+class ProductCatList(RootModel[list[resources.ProductCat]]):
+    pass
 
 
-class ProductReviewList(BaseModel):
-    __root__: list[resources.ProductReview]
+class ProductReviewList(RootModel[list[resources.ProductReview]]):
+    pass
 
 
-class ProductShippingClassList(BaseModel):
-    __root__: list[resources.ProductShippingClass]
+class ProductShippingClassList(RootModel[list[resources.ProductShippingClass]]):
+    pass
 
 
-class ProductTagList(BaseModel):
-    __root__: list[resources.ProductTag]
+class ProductTagList(RootModel[list[resources.ProductTag]]):
+    pass
 
 
-class ProductList(BaseModel):
-    __root__: list[resources.Product]
+class ProductList(RootModel[list[resources.Product]]):
+    pass
 
 
-class ProductVariationList(BaseModel):
-    __root__: list[resources.ProductVariation]
+class ProductVariationList(RootModel[list[resources.ProductVariation]]):
+    pass
 
 
-class SalesReportList(BaseModel):
-    __root__: list[resources.SalesReport]
+class SalesReportList(RootModel[list[resources.SalesReport]]):
+    pass
 
 
-class TopSellersReportList(BaseModel):
-    __root__: list[resources.TopSellersReport]
+class TopSellersReportList(RootModel[list[resources.TopSellersReport]]):
+    pass
 
 
-class ReportOrderTotalList(BaseModel):
-    __root__: list[resources.ReportOrderTotal]
+class ReportOrderTotalList(RootModel[list[resources.ReportOrderTotal]]):
+    pass
 
 
-class ReportProductTotalList(BaseModel):
-    __root__: list[resources.ReportProductTotal]
+class ReportProductTotalList(RootModel[list[resources.ReportProductTotal]]):
+    pass
 
 
-class ReportCustomerTotalList(BaseModel):
-    __root__: list[resources.ReportCustomerTotal]
+class ReportCustomerTotalList(RootModel[list[resources.ReportCustomerTotal]]):
+    pass
 
 
-class ReportCouponTotalList(BaseModel):
-    __root__: list[resources.ReportCouponTotal]
+class ReportCouponTotalList(RootModel[list[resources.ReportCouponTotal]]):
+    pass
 
 
-class ReportReviewTotalList(BaseModel):
-    __root__: list[resources.ReportReviewTotal]
+class ReportReviewTotalList(RootModel[list[resources.ReportReviewTotal]]):
+    pass
 
 
-class ReportList(BaseModel):
-    __root__: list[resources.Report]
+class ReportList(RootModel[list[resources.Report]]):
+    pass
 
 
-class ShippingZoneList(BaseModel):
-    __root__: list[resources.ShippingZone]
+class ShippingZoneList(RootModel[list[resources.ShippingZone]]):
+    pass
 
 
-class ShippingZoneLocationList(BaseModel):
-    __root__: list[resources.ShippingZoneLocation]
+class ShippingZoneLocationList(RootModel[list[resources.ShippingZoneLocation]]):
+    pass
 
 
-class ShippingZoneMethodList(BaseModel):
-    __root__: list[resources.ShippingZoneMethod]
+class ShippingZoneMethodList(RootModel[list[resources.ShippingZoneMethod]]):
+    pass
 
 
-class TaxClassList(BaseModel):
-    __root__: list[resources.TaxClass]
+class TaxClassList(RootModel[list[resources.TaxClass]]):
+    pass
 
 
-class TaxList(BaseModel):
-    __root__: list[resources.Tax]
+class TaxList(RootModel[list[resources.Tax]]):
+    pass
 
 
-class WebhookList(BaseModel):
-    __root__: list[resources.Webhook]
+class WebhookList(RootModel[list[resources.Webhook]]):
+    pass
 
 
-class SystemStatusToolList(BaseModel):
-    __root__: list[resources.SystemStatusTool]
+class SystemStatusToolList(RootModel[list[resources.SystemStatusTool]]):
+    pass
 
 
-class ShippingMethodList(BaseModel):
-    __root__: list[resources.ShippingMethod]
+class ShippingMethodList(RootModel[list[resources.ShippingMethod]]):
+    pass
 
 
-class PaymentGatewayList(BaseModel):
-    __root__: list[resources.PaymentGateway]
+class PaymentGatewayList(RootModel[list[resources.PaymentGateway]]):
+    pass
 
 
-class DataContinentsList(BaseModel):
-    __root__: list[resources.DataContinents]
+class DataContinentsList(RootModel[list[resources.DataContinents]]):
+    pass
 
 
-class DataCountriesList(BaseModel):
-    __root__: list[resources.DataCountries]
+class DataCountriesList(RootModel[list[resources.DataCountries]]):
+    pass
 
 
-class DataCurrenciesList(BaseModel):
-    __root__: list[resources.DataCurrencies]
+class DataCurrenciesList(RootModel[list[resources.DataCurrencies]]):
+    pass
 
 
 response_models = {
