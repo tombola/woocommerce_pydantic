@@ -1,7 +1,7 @@
 from woocommerce import API as woocommmerce_api
 from requests import Response
 
-from woocommerce_pydantic.wcapi.models import resource_lists, resources
+from woocommerce_pydantic.wcapi.models import collections, resources
 from urllib.parse import urlparse
 
 
@@ -30,7 +30,7 @@ class WooDataResponse(Response):
         url_path = self.get_endpoint_components(self.url)
         # TODO: pattern match from mapping dict
         if url_path[-1] == "orders":
-            return resource_lists.ShopOrderList
+            return collections.ShopOrderList
         return None
 
     def data(self):
