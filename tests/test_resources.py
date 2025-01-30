@@ -2,11 +2,9 @@ import json  # noqa: D100
 import os
 from pathlib import Path
 
-import pytest
 import responses
-# from woocommerce import API
-from woocommerce_pydantic.wcapi.api import API
 
+from woocommerce_pydantic.wcapi.api import API
 from woocommerce_pydantic.wcapi.models import collections, resources
 
 WC_URL = os.environ.get("TEST_WC_URL", "http://example.com")
@@ -47,7 +45,6 @@ def test_get_orders():
     assert len(response_json) == 2
 
     # Test validating pydantic model manually
-
     orders = collections.ShopOrderList(response_json)
     assert isinstance(orders.root, list)
     assert len(orders.root) == 2
@@ -57,8 +54,16 @@ def test_get_orders():
 
     # Test validating pydantic model using the data() method
     orders = response.data()
+    assert isinstance(orders, collections.ShopOrderList)
     assert isinstance(orders.root, list)
     assert len(orders.root) == 2
     assert isinstance(orders.root[0], resources.ShopOrder)
     assert isinstance(orders.root[0].id, int)
-    assert orders.root[0].id == 727
+
+    first_collection_item = orders.root[0]
+    assert first_collection_item.id == 727
+
+    # Check the response data can be identified as a woocommerce collection
+    assert isinstance(orders, collections.WooCommerceCollection)
+    # Check that collection items can be identified as woocommerce resources
+    assert isinstance(first_collection_item, resources.WooCommerceResource)

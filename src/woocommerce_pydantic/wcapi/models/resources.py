@@ -14,19 +14,22 @@ from typing import Any
 from pydantic import AnyUrl, BaseModel, EmailStr, Field
 
 
+class WooCommerceResource(BaseModel):
+    pass
+
 class DiscountType(Enum):
     percent = "percent"
     fixed_cart = "fixed_cart"
     fixed_product = "fixed_product"
 
 
-class MetaDatum(BaseModel):
+class MetaDatum(WooCommerceResource):
     id: int | None = Field(None, description="Meta ID.")
     key: str | None = Field(None, description="Meta key.")
     value: str | dict[str, Any] | None = Field(None, description="Meta value.")
 
 
-class ShopCoupon(BaseModel):
+class ShopCoupon(WooCommerceResource):
     id: int | None = Field(None, description="Unique identifier for the object.")
     code: str | None = Field(None, description="Coupon code.")
     amount: str | None = Field(
@@ -125,12 +128,12 @@ class ShopCoupon(BaseModel):
     meta_data: list[MetaDatum] | None = Field(None, description="Meta data.")
 
 
-class File(BaseModel):
+class File(WooCommerceResource):
     name: str | None = Field(None, description="File name.")
     file: str | None = Field(None, description="File URL.")
 
 
-class CustomerDownload(BaseModel):
+class CustomerDownload(WooCommerceResource):
     download_id: str | None = Field(None, description="Download ID.")
     download_url: str | None = Field(None, description="Download file URL.")
     product_id: int | None = Field(None, description="Downloadable product ID.")
@@ -153,7 +156,7 @@ class CustomerDownload(BaseModel):
     file: File | None = Field(None, description="File details.")
 
 
-class Billing(BaseModel):
+class Billing(WooCommerceResource):
     first_name: str | None = Field(None, description="First name.")
     last_name: str | None = Field(None, description="Last name.")
     company: str | None = Field(None, description="Company name.")
@@ -170,7 +173,7 @@ class Billing(BaseModel):
     phone: str | None = Field(None, description="Phone number.")
 
 
-class Shipping(BaseModel):
+class Shipping(WooCommerceResource):
     first_name: str | None = Field(None, description="First name.")
     last_name: str | None = Field(None, description="Last name.")
     company: str | None = Field(None, description="Company name.")
@@ -186,7 +189,7 @@ class Shipping(BaseModel):
     phone: str | None = Field(None, description="Phone number.")
 
 
-class Customer(BaseModel):
+class Customer(WooCommerceResource):
     id: int | None = Field(None, description="Unique identifier for the resource.")
     date_created: str | None = Field(
         None,
@@ -229,7 +232,7 @@ class Customer(BaseModel):
     meta_data: list[MetaDatum] | None = Field(None, description="Meta data.")
 
 
-class OrderNote(BaseModel):
+class OrderNote(WooCommerceResource):
     id: int | None = Field(None, description="Unique identifier for the resource.")
     author: str | None = Field(None, description="Order note author.")
     date_created: str | None = Field(
@@ -251,7 +254,7 @@ class OrderNote(BaseModel):
     )
 
 
-class Tax(BaseModel):
+class Tax(WooCommerceResource):
     id: int | None = Field(None, description="Tax rate ID.")
     total: str | None = Field(None, description="Tax total.")
     subtotal: str | None = Field(None, description="Tax subtotal.")
@@ -261,7 +264,7 @@ class Tax(BaseModel):
     )
 
 
-class LineItem(BaseModel):
+class LineItem(WooCommerceResource):
     id: int | None = Field(None, description="Item ID.")
     name: str | None = Field(None, description="Product name.")
     product_id: int | None = Field(None, description="Product ID.")
@@ -294,7 +297,7 @@ class LineItem(BaseModel):
     )
 
 
-class ShopOrderRefund(BaseModel):
+class ShopOrderRefund(WooCommerceResource):
     id: int | None = Field(None, description="Unique identifier for the resource.")
     date_created: str | None = Field(
         None,
@@ -502,7 +505,7 @@ class Currency(Enum):
     ZMW = "ZMW"
 
 
-class Billing1(BaseModel):
+class Billing1(WooCommerceResource):
     first_name: str | None = Field(None, description="First name.")
     last_name: str | None = Field(None, description="Last name.")
     company: str | None = Field(None, description="Company name.")
@@ -522,7 +525,7 @@ class Billing1(BaseModel):
     phone: str | None = Field(None, description="Phone number.")
 
 
-class Shipping1(BaseModel):
+class Shipping1(WooCommerceResource):
     first_name: str | None = Field(None, description="First name.")
     last_name: str | None = Field(None, description="Last name.")
     company: str | None = Field(None, description="Company name.")
@@ -540,13 +543,13 @@ class Shipping1(BaseModel):
     )
 
 
-class Tax1(BaseModel):
+class Tax1(WooCommerceResource):
     id: int | None = Field(None, description="Tax rate ID.")
     total: str | None = Field(None, description="Tax total.")
     subtotal: str | None = Field(None, description="Tax subtotal.")
 
 
-class MetaDatum5(BaseModel):
+class MetaDatum5(WooCommerceResource):
     id: int | None = Field(None, description="Meta ID.")
     key: str | None = Field(None, description="Meta key.")
     value: str | dict[str, Any] | None = Field(None, description="Meta value.")
@@ -554,7 +557,7 @@ class MetaDatum5(BaseModel):
     display_value: str | None = Field(None, description="Meta value for UI display.")
 
 
-class LineItem1(BaseModel):
+class LineItem1(WooCommerceResource):
     id: int | None = Field(None, description="Item ID.")
     name: str | None = Field(None, description="Product name.")
     parent_name: str | None = Field(
@@ -587,13 +590,13 @@ class LineItem1(BaseModel):
     price: float | None = Field(None, description="Product price.")
 
 
-class MetaDatum6(BaseModel):
+class MetaDatum6(WooCommerceResource):
     id: int | None = Field(None, description="Meta ID.")
     key: str | None = Field(None, description="Meta key.")
     value: str | dict[str, Any] | None = Field(None, description="Meta value.")
 
 
-class TaxLine(BaseModel):
+class TaxLine(WooCommerceResource):
     id: int | None = Field(None, description="Item ID.")
     rate_code: str | None = Field(None, description="Tax rate code.")
     rate_id: int | None = Field(None, description="Tax rate ID.")
@@ -610,12 +613,12 @@ class TaxLine(BaseModel):
     meta_data: list[MetaDatum6] | None = Field(None, description="Meta data.")
 
 
-class Tax2(BaseModel):
+class Tax2(WooCommerceResource):
     id: int | None = Field(None, description="Tax rate ID.")
     total: str | None = Field(None, description="Tax total.")
 
 
-class ShippingLine(BaseModel):
+class ShippingLine(WooCommerceResource):
     id: int | None = Field(None, description="Item ID.")
     method_title: str | None = Field(None, description="Shipping method name.")
     method_id: str | None = Field(None, description="Shipping method ID.")
@@ -634,13 +637,13 @@ class TaxStatus(Enum):
     none = "none"
 
 
-class Tax3(BaseModel):
+class Tax3(WooCommerceResource):
     id: int | None = Field(None, description="Tax rate ID.")
     total: str | None = Field(None, description="Tax total.")
     subtotal: str | None = Field(None, description="Tax subtotal.")
 
 
-class FeeLine(BaseModel):
+class FeeLine(WooCommerceResource):
     id: int | None = Field(None, description="Item ID.")
     name: str | None = Field(None, description="Fee name.")
     tax_class: str | None = Field(None, description="Tax class of fee.")
@@ -654,7 +657,7 @@ class FeeLine(BaseModel):
     meta_data: list[MetaDatum6] | None = Field(None, description="Meta data.")
 
 
-class CouponLine(BaseModel):
+class CouponLine(WooCommerceResource):
     id: int | None = Field(None, description="Item ID.")
     code: str | None = Field(None, description="Coupon code.")
     discount: str | None = Field(None, description="Discount total.")
@@ -662,13 +665,13 @@ class CouponLine(BaseModel):
     meta_data: list[MetaDatum6] | None = Field(None, description="Meta data.")
 
 
-class Refund(BaseModel):
+class Refund(WooCommerceResource):
     id: int | None = Field(None, description="Refund ID.")
     reason: str | None = Field(None, description="Refund reason.")
     total: str | None = Field(None, description="Refund total.")
 
 
-class ShopOrder(BaseModel):
+class ShopOrder(WooCommerceResource):
     id: int | None = Field(None, description="Unique identifier for the resource.")
     parent_id: int | None = Field(None, description="Parent order ID.")
     number: str | None = Field(None, description="Order number.")
@@ -788,7 +791,7 @@ class ShopOrder(BaseModel):
     )
 
 
-class ProductAttributeTerm(BaseModel):
+class ProductAttributeTerm(WooCommerceResource):
     id: int | None = Field(None, description="Unique identifier for the resource.")
     name: str | None = Field(None, description="Term name.")
     slug: str | None = Field(
@@ -820,7 +823,7 @@ class OrderBy(Enum):
     id = "id"
 
 
-class ProductAttribute(BaseModel):
+class ProductAttribute(WooCommerceResource):
     id: int | None = Field(None, description="Unique identifier for the resource.")
     name: str | None = Field(None, description="Attribute name.")
     slug: str | None = Field(
@@ -842,7 +845,7 @@ class Display(Enum):
     both = "both"
 
 
-class Image(BaseModel):
+class Image(WooCommerceResource):
     id: int | None = Field(None, description="Image ID.")
     date_created: str | None = Field(
         None,
@@ -865,7 +868,7 @@ class Image(BaseModel):
     alt: str | None = Field(None, description="Image alternative text.")
 
 
-class ProductCat(BaseModel):
+class ProductCat(WooCommerceResource):
     id: int | None = Field(None, description="Unique identifier for the resource.")
     name: str | None = Field(None, description="Category name.")
     slug: str | None = Field(
@@ -904,7 +907,7 @@ class Status1(Enum):
     untrash = "untrash"
 
 
-class ReviewerAvatarUrls(BaseModel):
+class ReviewerAvatarUrls(WooCommerceResource):
     field_24: AnyUrl | None = Field(
         None,
         alias="24",
@@ -922,7 +925,7 @@ class ReviewerAvatarUrls(BaseModel):
     )
 
 
-class ProductReview(BaseModel):
+class ProductReview(WooCommerceResource):
     id: int | None = Field(None, description="Unique identifier for the resource.")
     date_created: str | None = Field(
         None,
@@ -951,7 +954,7 @@ class ProductReview(BaseModel):
     )
 
 
-class ProductShippingClass(BaseModel):
+class ProductShippingClass(WooCommerceResource):
     id: int | None = Field(None, description="Unique identifier for the resource.")
     name: str | None = Field(None, description="Shipping class name.")
     slug: str | None = Field(
@@ -968,7 +971,7 @@ class ProductShippingClass(BaseModel):
     )
 
 
-class ProductTag(BaseModel):
+class ProductTag(WooCommerceResource):
     id: int | None = Field(None, description="Unique identifier for the resource.")
     name: str | None = Field(None, description="Tag name.")
     slug: str | None = Field(
@@ -1007,7 +1010,7 @@ class CatalogVisibility(Enum):
     hidden = "hidden"
 
 
-class Download(BaseModel):
+class Download(WooCommerceResource):
     id: str | None = Field(None, description="File ID.")
     name: str | None = Field(None, description="File name.")
     file: str | None = Field(None, description="File URL.")
@@ -1031,25 +1034,25 @@ class Backorders(Enum):
     yes = "yes"
 
 
-class Dimensions(BaseModel):
+class Dimensions(WooCommerceResource):
     length: str | None = Field(None, description="Product length (cm).")
     width: str | None = Field(None, description="Product width (cm).")
     height: str | None = Field(None, description="Product height (cm).")
 
 
-class Category(BaseModel):
+class Category(WooCommerceResource):
     id: int | None = Field(None, description="Category ID.")
     name: str | None = Field(None, description="Category name.")
     slug: str | None = Field(None, description="Category slug.")
 
 
-class Tag(BaseModel):
+class Tag(WooCommerceResource):
     id: int | None = Field(None, description="Tag ID.")
     name: str | None = Field(None, description="Tag name.")
     slug: str | None = Field(None, description="Tag slug.")
 
 
-class Attribute(BaseModel):
+class Attribute(WooCommerceResource):
     id: int | None = Field(None, description="Attribute ID.")
     name: str | None = Field(None, description="Attribute name.")
     position: int | None = Field(None, description="Attribute position.")
@@ -1067,13 +1070,13 @@ class Attribute(BaseModel):
     )
 
 
-class DefaultAttribute(BaseModel):
+class DefaultAttribute(WooCommerceResource):
     id: int | None = Field(None, description="Attribute ID.")
     name: str | None = Field(None, description="Attribute name.")
     option: str | None = Field(None, description="Selected attribute term name.")
 
 
-class Product(BaseModel):
+class Product(WooCommerceResource):
     id: int | None = Field(None, description="Unique identifier for the resource.")
     name: str | None = Field(None, description="Product name.")
     slug: str | None = Field(None, description="Product slug.")
@@ -1260,19 +1263,19 @@ class Status3(Enum):
     publish = "publish"
 
 
-class Dimensions1(BaseModel):
+class Dimensions1(WooCommerceResource):
     length: str | None = Field(None, description="Variation length (cm).")
     width: str | None = Field(None, description="Variation width (cm).")
     height: str | None = Field(None, description="Variation height (cm).")
 
 
-class Attribute1(BaseModel):
+class Attribute1(WooCommerceResource):
     id: int | None = Field(None, description="Attribute ID.")
     name: str | None = Field(None, description="Attribute name.")
     option: str | None = Field(None, description="Selected attribute term name.")
 
 
-class ProductVariation(BaseModel):
+class ProductVariation(WooCommerceResource):
     id: int | None = Field(None, description="Unique identifier for the resource.")
     date_created: str | None = Field(
         None,
@@ -1373,7 +1376,7 @@ class ProductVariation(BaseModel):
     meta_data: list[MetaDatum6] | None = Field(None, description="Meta data.")
 
 
-class SalesReport(BaseModel):
+class SalesReport(WooCommerceResource):
     total_sales: str | None = Field(None, description="Gross sales in the period.")
     net_sales: str | None = Field(None, description="Net sales in the period.")
     average_sales: str | None = Field(None, description="Average net daily sales.")
@@ -1390,13 +1393,13 @@ class SalesReport(BaseModel):
     totals: list[int] | None = Field(None, description="Totals.")
 
 
-class TopSellersReport(BaseModel):
+class TopSellersReport(WooCommerceResource):
     name: str | None = Field(None, description="Product name.")
     product_id: int | None = Field(None, description="Product ID.")
     quantity: int | None = Field(None, description="Total number of purchases.")
 
 
-class ReportOrderTotal(BaseModel):
+class ReportOrderTotal(WooCommerceResource):
     slug: str | None = Field(
         None,
         description="An alphanumeric identifier for the resource.",
@@ -1405,7 +1408,7 @@ class ReportOrderTotal(BaseModel):
     total: str | None = Field(None, description="Amount of orders.")
 
 
-class ReportProductTotal(BaseModel):
+class ReportProductTotal(WooCommerceResource):
     slug: str | None = Field(
         None,
         description="An alphanumeric identifier for the resource.",
@@ -1414,7 +1417,7 @@ class ReportProductTotal(BaseModel):
     total: str | None = Field(None, description="Amount of products.")
 
 
-class ReportCustomerTotal(BaseModel):
+class ReportCustomerTotal(WooCommerceResource):
     slug: str | None = Field(
         None,
         description="An alphanumeric identifier for the resource.",
@@ -1423,7 +1426,7 @@ class ReportCustomerTotal(BaseModel):
     total: str | None = Field(None, description="Amount of customers.")
 
 
-class ReportCouponTotal(BaseModel):
+class ReportCouponTotal(WooCommerceResource):
     slug: str | None = Field(
         None,
         description="An alphanumeric identifier for the resource.",
@@ -1432,7 +1435,7 @@ class ReportCouponTotal(BaseModel):
     total: str | None = Field(None, description="Amount of coupons.")
 
 
-class ReportReviewTotal(BaseModel):
+class ReportReviewTotal(WooCommerceResource):
     slug: str | None = Field(
         None,
         description="An alphanumeric identifier for the resource.",
@@ -1441,7 +1444,7 @@ class ReportReviewTotal(BaseModel):
     total: str | None = Field(None, description="Amount of reviews.")
 
 
-class Report(BaseModel):
+class Report(WooCommerceResource):
     slug: str | None = Field(
         None,
         description="An alphanumeric identifier for the resource.",
@@ -1452,7 +1455,7 @@ class Report(BaseModel):
     )
 
 
-class SettingGroup(BaseModel):
+class SettingGroup(WooCommerceResource):
     id: str | None = Field(
         None,
         description="A unique identifier that can be used to link settings together.",
@@ -1483,7 +1486,7 @@ class Type2(Enum):
     checkbox = "checkbox"
 
 
-class Setting(BaseModel):
+class Setting(WooCommerceResource):
     id: str | None = Field(None, description="A unique identifier for the setting.")
     group_id: str | None = Field(
         None,
@@ -1514,7 +1517,7 @@ class Setting(BaseModel):
     )
 
 
-class ShippingZone(BaseModel):
+class ShippingZone(WooCommerceResource):
     id: int | None = Field(None, description="Unique identifier for the resource.")
     name: str | None = Field(None, description="Shipping zone name.")
     order: int | None = Field(None, description="Shipping zone order.")
@@ -1527,7 +1530,7 @@ class Type3(Enum):
     continent = "continent"
 
 
-class ShippingZoneLocation(BaseModel):
+class ShippingZoneLocation(WooCommerceResource):
     code: str | None = Field(None, description="Shipping zone location code.")
     type: Type3 | None = Field(None, description="Shipping zone location type.")
 
@@ -1548,7 +1551,7 @@ class Type4(Enum):
     order = "order"
 
 
-class Settings(BaseModel):
+class Settings(WooCommerceResource):
     id: str | None = Field(None, description="A unique identifier for the setting.")
     label: str | None = Field(
         None,
@@ -1571,7 +1574,7 @@ class Settings(BaseModel):
     )
 
 
-class ShippingZoneMethod(BaseModel):
+class ShippingZoneMethod(WooCommerceResource):
     id: int | None = Field(None, description="Shipping method instance ID.")
     instance_id: int | None = Field(None, description="Shipping method instance ID.")
     title: str | None = Field(
@@ -1589,7 +1592,7 @@ class ShippingZoneMethod(BaseModel):
     settings: Settings | None = Field(None, description="Shipping method settings.")
 
 
-class TaxClass(BaseModel):
+class TaxClass(WooCommerceResource):
     slug: str | None = Field(None, description="Unique identifier for the resource.")
     name: str = Field(..., description="Tax class name.")
 
@@ -1600,7 +1603,7 @@ class Class(Enum):
     zero_rate = "zero-rate"
 
 
-class Tax4(BaseModel):
+class Tax4(WooCommerceResource):
     id: int | None = Field(None, description="Unique identifier for the resource.")
     country: str | None = Field(None, description="Country ISO 3166 code.")
     state: str | None = Field(None, description="State code.")
@@ -1644,7 +1647,7 @@ class Status4(Enum):
     disabled = "disabled"
 
 
-class Webhook(BaseModel):
+class Webhook(WooCommerceResource):
     id: int | None = Field(None, description="Unique identifier for the resource.")
     name: str | None = Field(None, description="A friendly name for the webhook.")
     status: Status4 | None = Field(None, description="Webhook status.")
@@ -1681,7 +1684,7 @@ class Webhook(BaseModel):
     )
 
 
-class Environment(BaseModel):
+class Environment(WooCommerceResource):
     home_url: AnyUrl | None = Field(None, description="Home URL.")
     site_url: AnyUrl | None = Field(None, description="Site URL.")
     version: str | None = Field(None, description="WooCommerce version.")
@@ -1748,7 +1751,7 @@ class Environment(BaseModel):
     remote_get_response: str | None = Field(None, description="Remote GET response.")
 
 
-class Database(BaseModel):
+class Database(WooCommerceResource):
     wc_database_version: str | None = Field(None, description="WC database version.")
     database_prefix: str | None = Field(None, description="Database prefix.")
     maxmind_geoip_database: str | None = Field(
@@ -1758,7 +1761,7 @@ class Database(BaseModel):
     database_tables: list[str] | None = Field(None, description="Database tables.")
 
 
-class Theme(BaseModel):
+class Theme(WooCommerceResource):
     name: str | None = Field(None, description="Theme name.")
     version: str | None = Field(None, description="Theme version.")
     version_latest: str | None = Field(None, description="Latest version of theme.")
@@ -1788,7 +1791,7 @@ class Theme(BaseModel):
     )
 
 
-class Settings1(BaseModel):
+class Settings1(WooCommerceResource):
     api_enabled: bool | None = Field(None, description="REST API enabled?")
     force_ssl: bool | None = Field(None, description="SSL forced?")
     currency: str | None = Field(None, description="Currency.")
@@ -1811,7 +1814,7 @@ class Settings1(BaseModel):
     )
 
 
-class Security(BaseModel):
+class Security(WooCommerceResource):
     secure_connection: bool | None = Field(
         None,
         description="Is the connection to your store secure?",
@@ -1819,7 +1822,7 @@ class Security(BaseModel):
     hide_errors: bool | None = Field(None, description="Hide errors from visitors?")
 
 
-class SystemStatus(BaseModel):
+class SystemStatus(WooCommerceResource):
     environment: Environment | None = Field(None, description="Environment.")
     database: Database | None = Field(None, description="Database.")
     active_plugins: list[str] | None = Field(None, description="Active plugins.")
@@ -1835,7 +1838,7 @@ class SystemStatus(BaseModel):
     post_type_counts: list[str] | None = Field(None, description="Total post count.")
 
 
-class SystemStatusTool(BaseModel):
+class SystemStatusTool(WooCommerceResource):
     id: str | None = Field(None, description="A unique identifier for the tool.")
     name: str | None = Field(None, description="Tool name.")
     action: str | None = Field(None, description="What running the tool will do.")
@@ -1844,7 +1847,7 @@ class SystemStatusTool(BaseModel):
     message: str | None = Field(None, description="Tool return message.")
 
 
-class ShippingMethod(BaseModel):
+class ShippingMethod(WooCommerceResource):
     id: str | None = Field(None, description="Method ID.")
     title: str | None = Field(None, description="Shipping method title.")
     description: str | None = Field(None, description="Shipping method description.")
@@ -1864,7 +1867,7 @@ class Type5(Enum):
     checkbox = "checkbox"
 
 
-class Settings2(BaseModel):
+class Settings2(WooCommerceResource):
     id: str | None = Field(None, description="A unique identifier for the setting.")
     label: str | None = Field(
         None,
@@ -1887,7 +1890,7 @@ class Settings2(BaseModel):
     )
 
 
-class PaymentGateway(BaseModel):
+class PaymentGateway(WooCommerceResource):
     id: str | None = Field(None, description="Payment gateway ID.")
     title: str | None = Field(None, description="Payment gateway title on checkout.")
     description: str | None = Field(
@@ -1911,17 +1914,17 @@ class PaymentGateway(BaseModel):
     settings: Settings2 | None = Field(None, description="Payment gateway settings.")
 
 
-class DataIndex(BaseModel):
+class DataIndex(WooCommerceResource):
     slug: str | None = Field(None, description="Data resource ID.")
     description: str | None = Field(None, description="Data resource description.")
 
 
-class State(BaseModel):
+class State(WooCommerceResource):
     code: str | None = Field(None, description="State code.")
     name: str | None = Field(None, description="Full name of state.")
 
 
-class Country(BaseModel):
+class Country(WooCommerceResource):
     code: str | None = Field(None, description="ISO3166 alpha-2 country code.")
     currency_code: str | None = Field(
         None,
@@ -1958,7 +1961,7 @@ class Country(BaseModel):
     )
 
 
-class DataContinents(BaseModel):
+class DataContinents(WooCommerceResource):
     code: str | None = Field(None, description="2 character continent code.")
     name: str | None = Field(None, description="Full name of continent.")
     countries: list[Country] | None = Field(
@@ -1967,7 +1970,7 @@ class DataContinents(BaseModel):
     )
 
 
-class DataCountries(BaseModel):
+class DataCountries(WooCommerceResource):
     code: str | None = Field(None, description="ISO3166 alpha-2 country code.")
     name: str | None = Field(None, description="Full name of country.")
     states: list[State] | None = Field(
@@ -1976,7 +1979,7 @@ class DataCountries(BaseModel):
     )
 
 
-class DataCurrencies(BaseModel):
+class DataCurrencies(WooCommerceResource):
     code: str | None = Field(None, description="ISO4217 currency code.")
     name: str | None = Field(None, description="Full name of currency.")
     symbol: str | None = Field(None, description="Currency symbol.")

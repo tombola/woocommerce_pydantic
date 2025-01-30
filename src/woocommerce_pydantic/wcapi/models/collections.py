@@ -12,139 +12,142 @@ from pydantic import RootModel
 from woocommerce_pydantic.wcapi.models import resources
 
 
-class ShopCouponList(RootModel[list[resources.ShopCoupon]]):
+class WooCommerceCollection(RootModel):
+    pass
+
+class ShopCouponList(WooCommerceCollection[list[resources.ShopCoupon]]):
     pass
 
 
-class CustomerDownloadList(RootModel[list[resources.CustomerDownload]]):
+class CustomerDownloadList(WooCommerceCollection[list[resources.CustomerDownload]]):
     pass
 
 
-class CustomerList(RootModel[list[resources.Customer]]):
+class CustomerList(WooCommerceCollection[list[resources.Customer]]):
     pass
 
 
-class OrderNoteList(RootModel[list[resources.OrderNote]]):
+class OrderNoteList(WooCommerceCollection[list[resources.OrderNote]]):
     pass
 
 
-class ShopOrderRefundList(RootModel[list[resources.ShopOrderRefund]]):
+class ShopOrderRefundList(WooCommerceCollection[list[resources.ShopOrderRefund]]):
     pass
 
 
-class ShopOrderList(RootModel[list[resources.ShopOrder]]):
+class ShopOrderList(WooCommerceCollection[list[resources.ShopOrder]]):
     pass
 
 
-class ProductAttributeTermList(RootModel[list[resources.ProductAttributeTerm]]):
+class ProductAttributeTermList(WooCommerceCollection[list[resources.ProductAttributeTerm]]):
     pass
 
 
-class ProductAttributeList(RootModel[list[resources.ProductAttribute]]):
+class ProductAttributeList(WooCommerceCollection[list[resources.ProductAttribute]]):
     pass
 
 
-class ProductCatList(RootModel[list[resources.ProductCat]]):
+class ProductCatList(WooCommerceCollection[list[resources.ProductCat]]):
     pass
 
 
-class ProductReviewList(RootModel[list[resources.ProductReview]]):
+class ProductReviewList(WooCommerceCollection[list[resources.ProductReview]]):
     pass
 
 
-class ProductShippingClassList(RootModel[list[resources.ProductShippingClass]]):
+class ProductShippingClassList(WooCommerceCollection[list[resources.ProductShippingClass]]):
     pass
 
 
-class ProductTagList(RootModel[list[resources.ProductTag]]):
+class ProductTagList(WooCommerceCollection[list[resources.ProductTag]]):
     pass
 
 
-class ProductList(RootModel[list[resources.Product]]):
+class ProductList(WooCommerceCollection[list[resources.Product]]):
     pass
 
 
-class ProductVariationList(RootModel[list[resources.ProductVariation]]):
+class ProductVariationList(WooCommerceCollection[list[resources.ProductVariation]]):
     pass
 
 
-class SalesReportList(RootModel[list[resources.SalesReport]]):
+class SalesReportList(WooCommerceCollection[list[resources.SalesReport]]):
     pass
 
 
-class TopSellersReportList(RootModel[list[resources.TopSellersReport]]):
+class TopSellersReportList(WooCommerceCollection[list[resources.TopSellersReport]]):
     pass
 
 
-class ReportOrderTotalList(RootModel[list[resources.ReportOrderTotal]]):
+class ReportOrderTotalList(WooCommerceCollection[list[resources.ReportOrderTotal]]):
     pass
 
 
-class ReportProductTotalList(RootModel[list[resources.ReportProductTotal]]):
+class ReportProductTotalList(WooCommerceCollection[list[resources.ReportProductTotal]]):
     pass
 
 
-class ReportCustomerTotalList(RootModel[list[resources.ReportCustomerTotal]]):
+class ReportCustomerTotalList(WooCommerceCollection[list[resources.ReportCustomerTotal]]):
     pass
 
 
-class ReportCouponTotalList(RootModel[list[resources.ReportCouponTotal]]):
+class ReportCouponTotalList(WooCommerceCollection[list[resources.ReportCouponTotal]]):
     pass
 
 
-class ReportReviewTotalList(RootModel[list[resources.ReportReviewTotal]]):
+class ReportReviewTotalList(WooCommerceCollection[list[resources.ReportReviewTotal]]):
     pass
 
 
-class ReportList(RootModel[list[resources.Report]]):
+class ReportList(WooCommerceCollection[list[resources.Report]]):
     pass
 
 
-class ShippingZoneList(RootModel[list[resources.ShippingZone]]):
+class ShippingZoneList(WooCommerceCollection[list[resources.ShippingZone]]):
     pass
 
 
-class ShippingZoneLocationList(RootModel[list[resources.ShippingZoneLocation]]):
+class ShippingZoneLocationList(WooCommerceCollection[list[resources.ShippingZoneLocation]]):
     pass
 
 
-class ShippingZoneMethodList(RootModel[list[resources.ShippingZoneMethod]]):
+class ShippingZoneMethodList(WooCommerceCollection[list[resources.ShippingZoneMethod]]):
     pass
 
 
-class TaxClassList(RootModel[list[resources.TaxClass]]):
+class TaxClassList(WooCommerceCollection[list[resources.TaxClass]]):
     pass
 
 
-class TaxList(RootModel[list[resources.Tax]]):
+class TaxList(WooCommerceCollection[list[resources.Tax]]):
     pass
 
 
-class WebhookList(RootModel[list[resources.Webhook]]):
+class WebhookList(WooCommerceCollection[list[resources.Webhook]]):
     pass
 
 
-class SystemStatusToolList(RootModel[list[resources.SystemStatusTool]]):
+class SystemStatusToolList(WooCommerceCollection[list[resources.SystemStatusTool]]):
     pass
 
 
-class ShippingMethodList(RootModel[list[resources.ShippingMethod]]):
+class ShippingMethodList(WooCommerceCollection[list[resources.ShippingMethod]]):
     pass
 
 
-class PaymentGatewayList(RootModel[list[resources.PaymentGateway]]):
+class PaymentGatewayList(WooCommerceCollection[list[resources.PaymentGateway]]):
     pass
 
 
-class DataContinentsList(RootModel[list[resources.DataContinents]]):
+class DataContinentsList(WooCommerceCollection[list[resources.DataContinents]]):
     pass
 
 
-class DataCountriesList(RootModel[list[resources.DataCountries]]):
+class DataCountriesList(WooCommerceCollection[list[resources.DataCountries]]):
     pass
 
 
-class DataCurrenciesList(RootModel[list[resources.DataCurrencies]]):
+class DataCurrenciesList(WooCommerceCollection[list[resources.DataCurrencies]]):
     pass
 
 
