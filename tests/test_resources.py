@@ -4,7 +4,8 @@ from pathlib import Path
 
 import pytest
 import responses
-from woocommerce import API
+# from woocommerce import API
+from woocommerce_pydantic.wcapi.api import API
 
 from woocommerce_pydantic.wcapi.models import resource_lists, resources
 
@@ -38,16 +39,24 @@ def test_get_orders():
 
     # Call the WooCommerce API
     response = wcapi.get("orders")
-    data = response.json()
+    response_json = response.json()
 
     assert response.status_code == 200
-    assert data[0]["id"] == 727
-    assert data[0]["id"] == orders_data[0]["id"] # 727
-    assert len(data) == 2
+    assert response_json[0]["id"] == 727
+    assert response_json[0]["id"] == orders_data[0]["id"] # 727
+    assert len(response_json) == 2
 
-    # Test validated pydantic model
+    # Test validating pydantic model manually
 
-    orders = resource_lists.ShopOrderList(data)
+    orders = resource_lists.ShopOrderList(response_json)
+    assert isinstance(orders.root, list)
+    assert len(orders.root) == 2
+    assert isinstance(orders.root[0], resources.ShopOrder)
+    assert isinstance(orders.root[0].id, int)
+    assert orders.root[0].id == 727
+
+    # Test validating pydantic model using the data() method
+    orders = response.data()
     assert isinstance(orders.root, list)
     assert len(orders.root) == 2
     assert isinstance(orders.root[0], resources.ShopOrder)
