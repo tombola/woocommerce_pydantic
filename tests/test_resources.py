@@ -21,19 +21,36 @@ wcapi = API(
 # Get the local directory of the current file
 current_directory = os.path.dirname(os.path.abspath(__file__))
 
+def mock_wcapi_get(endpoint: str) -> dict:
+    """
+    Add a mock endpoint using responses.
 
-@responses.activate
-def test_get_orders():
-    # Mock the API response
-    with (Path(current_directory) / "data/responses/v3/orders.json").open() as f:
+    Reads a JSON file corresponding to the given endpoint from the
+    'data/responses/v3/' directory.
+    Uses the `responses` library to mock a GET request to the WooCommerce API URL with the loaded JSON data.
+
+    Args:
+        endpoint (str): The endpoint to mock. This should be the name of the JSON
+                        file (without the .json extension) located in the
+                        'data/responses/v3/' directory.
+
+    Returns:
+        dict: The JSON data loaded from the file.
+
+    """
+    with (Path(current_directory) / f"data/responses/v3/{endpoint}.json").open() as f:
         orders_data = json.load(f)
-
     responses.add(
         responses.GET,
-        f"{WC_API_URL}/orders",
+        f"{WC_API_URL}/{endpoint}",
         json=orders_data,
         status=200,
     )
+    return orders_data
+
+@responses.activate
+def test_get_orders():
+    orders_data = mock_wcapi_get("orders")
 
     # Call the WooCommerce API
     response = wcapi.get("orders")
