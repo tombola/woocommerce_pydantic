@@ -4,8 +4,8 @@ from pathlib import Path
 
 import responses
 
-from woocommerce_pydantic.wcapi.api import API
-from woocommerce_pydantic.wcapi.models import collections, resources
+from woocommerce_pydantic.wcapi.wc_api import API
+from woocommerce_pydantic.wcapi.models import wc_collections, wc_resources
 
 WC_URL = os.environ.get("TEST_WC_URL", "http://example.com")
 WC_API_URL = f"{WC_URL}/wp-json/wc/v3"
@@ -62,25 +62,25 @@ def test_get_orders():
     assert len(response_json) == 2
 
     # Test validating pydantic model manually
-    orders = collections.ShopOrderList(response_json)
+    orders = wc_collections.ShopOrderList(response_json)
     assert isinstance(orders.root, list)
     assert len(orders.root) == 2
-    assert isinstance(orders.root[0], resources.ShopOrder)
+    assert isinstance(orders.root[0], wc_resources.ShopOrder)
     assert isinstance(orders.root[0].id, int)
     assert orders.root[0].id == 727
 
     # Test validating pydantic model using the data() method
     orders = response.data()
-    assert isinstance(orders, collections.ShopOrderList)
+    assert isinstance(orders, wc_collections.ShopOrderList)
     assert isinstance(orders.root, list)
     assert len(orders.root) == 2
-    assert isinstance(orders.root[0], resources.ShopOrder)
+    assert isinstance(orders.root[0], wc_resources.ShopOrder)
     assert isinstance(orders.root[0].id, int)
 
     first_collection_item = orders.root[0]
     assert first_collection_item.id == 727
 
     # Check the response data can be identified as a woocommerce collection
-    assert isinstance(orders, collections.WooCommerceCollection)
+    assert isinstance(orders, wc_collections.WooCommerceCollection)
     # Check that collection items can be identified as woocommerce resources
-    assert isinstance(first_collection_item, resources.WooCommerceResource)
+    assert isinstance(first_collection_item, wc_resources.WooCommerceResource)
