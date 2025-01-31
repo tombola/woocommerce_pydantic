@@ -38,15 +38,18 @@ def mock_wcapi_get(endpoint: str) -> dict:
         dict: The JSON data loaded from the file.
 
     """
-    with (Path(current_directory) / f"data/responses/v3/{endpoint}.json").open() as f:
-        orders_data = json.load(f)
+
+    underscore_filename = endpoint.lstrip('/').replace('/', '_')
+    example_file = f"data/responses/v3/{underscore_filename}.json"
+    with (Path(current_directory) / example_file).open() as f:
+        data = json.load(f)
     responses.add(
         responses.GET,
         f"{WC_API_URL}/{endpoint}",
-        json=orders_data,
+        json=data,
         status=200,
     )
-    return orders_data
+    return data
 
 @responses.activate
 def test_get_orders():
@@ -84,3 +87,14 @@ def test_get_orders():
     assert isinstance(orders, wc_collections.WooCommerceCollection)
     # Check that collection items can be identified as woocommerce resources
     assert isinstance(first_collection_item, wc_resources.WooCommerceResource)
+
+
+@responses.activate
+def test_get_order():
+    # "/orders/{id}": wc_resources.ShopOrder,
+    order_id = 123
+    order_data = mock_wcapi_get(f"orders/{order_id}")
+    response = wcapi.get(f"orders/{order_id}")
+    order = response.data()
+    assert isinstance(order, wc_resources.ShopOrder)
+    assert order_data["id"] == order.id
