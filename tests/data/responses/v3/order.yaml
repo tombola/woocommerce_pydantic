@@ -1,0 +1,30 @@
+responses:
+- response:
+    auto_calculate_content_length: false
+    body: '{"id":77,"parent_id":0,"status":"completed","currency":"USD","version":"9.6.0","prices_include_tax":false,"date_created":"2025-02-03T22:00:00","date_modified":"2025-02-03T09:27:51","discount_total":"0.00","discount_tax":"0.00","shipping_total":"0.00","shipping_tax":"0.00","cart_tax":"0.00","total":"17346.91","total_tax":"0.00","customer_id":23,"order_key":"wc_order_0MZoEb7aXPJvF","billing":{"first_name":"","last_name":"","company":"L\u1eef,
+      Di\u00eam and Di\u00eam","address_1":"","address_2":"","city":"\u0110\u00e0
+      N\u1eb5ng","state":"","postcode":"36526-3045","country":"VN","email":"fma@ma.com","phone":"039
+      876 0351"},"shipping":{"first_name":"","last_name":"","company":"","address_1":"","address_2":"","city":"","state":"","postcode":"","country":"","phone":""},"payment_method":"","payment_method_title":"","transaction_id":"","customer_ip_address":"","customer_user_agent":"","created_via":"smooth-generator","customer_note":"","date_completed":"2025-02-05T03:00:00","date_paid":"2025-02-04T08:00:00","cart_hash":"","number":"77","meta_data":[{"id":82,"key":"_wc_order_attribution_source_type","value":"admin"}],"line_items":[{"id":58,"name":"Rustic
+      Bronze Shoes","product_id":42,"variation_id":0,"quantity":2,"tax_class":"","subtotal":"687.22","subtotal_tax":"0.00","total":"687.22","total_tax":"0.00","taxes":[],"meta_data":[],"sku":"rustic-bronze-shoes-31550918","price":343.61000000000001,"image":{"id":"39","src":"http:\/\/woocommercetest.local\/wp-content\/uploads\/2025\/02\/img-magni.png"},"parent_name":null},{"id":59,"name":"Ergonomic
+      Aluminum Computer - debitis","product_id":44,"variation_id":47,"quantity":8,"tax_class":"","subtotal":"5066.56","subtotal_tax":"0.00","total":"5066.56","total_tax":"0.00","taxes":[],"meta_data":[{"id":558,"key":"distinctio-odio-voluptatem","value":"debitis","display_key":"Distinctio
+      odio voluptatem","display_value":"debitis"}],"sku":"ergonomic-aluminum-computer-21848049","price":633.32000000000005,"image":{"id":34,"src":"http:\/\/woocommercetest.local\/wp-content\/uploads\/2025\/02\/img-temporibus.png"},"parent_name":"Ergonomic
+      Aluminum Computer"},{"id":60,"name":"Rustic Rubber Plate","product_id":50,"variation_id":0,"quantity":7,"tax_class":"","subtotal":"3364.13","subtotal_tax":"0.00","total":"3364.13","total_tax":"0.00","taxes":[],"meta_data":[],"sku":"rustic-rubber-plate-42572091","price":480.59000000000003,"image":{"id":"31","src":"http:\/\/woocommercetest.local\/wp-content\/uploads\/2025\/02\/img-ullam.png"},"parent_name":null},{"id":61,"name":"Synergistic
+      Steel Wallet","product_id":41,"variation_id":0,"quantity":6,"tax_class":"","subtotal":"3269.40","subtotal_tax":"0.00","total":"3269.40","total_tax":"0.00","taxes":[],"meta_data":[{"id":586,"key":"_reduced_stock","value":"6","display_key":"_reduced_stock","display_value":"6"}],"sku":"synergistic-steel-wallet-94217032","price":544.89999999999998,"image":{"id":"40","src":"http:\/\/woocommercetest.local\/wp-content\/uploads\/2025\/02\/img-sit-1.png"},"parent_name":null},{"id":62,"name":"Intelligent
+      Steel Car","product_id":56,"variation_id":0,"quantity":8,"tax_class":"","subtotal":"4959.60","subtotal_tax":"0.00","total":"4959.60","total_tax":"0.00","taxes":[],"meta_data":[{"id":587,"key":"_reduced_stock","value":"8","display_key":"_reduced_stock","display_value":"8"}],"sku":"intelligent-steel-car-22738356","price":619.95000000000005,"image":{"id":"21","src":"http:\/\/woocommercetest.local\/wp-content\/uploads\/2025\/02\/img-pariatur.png"},"parent_name":null}],"tax_lines":[],"shipping_lines":[],"fee_lines":[],"coupon_lines":[],"refunds":[],"payment_url":"http:\/\/woocommercetest.local\/checkout\/order-pay\/77\/?pay_for_order=true&key=wc_order_0MZoEb7aXPJvF","is_editable":false,"needs_payment":false,"needs_processing":true,"date_created_gmt":"2025-02-03T22:00:00","date_modified_gmt":"2025-02-03T09:27:51","date_completed_gmt":"2025-02-05T03:00:00","date_paid_gmt":"2025-02-04T08:00:00","currency_symbol":"$","_links":{"self":[{"href":"http:\/\/woocommercetest.local\/wp-json\/wc\/v3\/orders\/77","targetHints":{"allow":["GET","POST","PUT","PATCH","DELETE"]}}],"collection":[{"href":"http:\/\/woocommercetest.local\/wp-json\/wc\/v3\/orders"}],"customer":[{"href":"http:\/\/woocommercetest.local\/wp-json\/wc\/v3\/customers\/23"}]}}'
+    content_type: text/plain
+    headers:
+      Access-Control-Allow-Headers: Authorization, X-WP-Nonce, Content-Disposition,
+        Content-MD5, Content-Type
+      Access-Control-Expose-Headers: X-WP-Total, X-WP-TotalPages, Link
+      Allow: GET, POST, PUT, PATCH, DELETE
+      Cache-Control: no-cache, must-revalidate, max-age=0, no-store, private
+      Expires: Wed, 11 Jan 1984 05:00:00 GMT
+      Link: <http://woocommercetest.local/wp-json/>; rel="https://api.w.org/"
+      Transfer-Encoding: chunked
+      Vary: Accept-Encoding
+      X-Content-Type-Options: nosniff
+      X-Powered-By: PHP/8.2.23
+      X-Robots-Tag: noindex
+    method: GET
+    status: 200
+    url: http://woocommercetest.local/wp-json/wc/v3/orders/77

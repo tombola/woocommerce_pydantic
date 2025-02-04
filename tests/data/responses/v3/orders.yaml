@@ -130,4 +130,4 @@ responses:
       X-WP-TotalPages: '1'
     method: GET
     status: 200
-    url: http://woocommercetest.local/wp-json/wc/v3/orders?oauth_consumer_key=ck_007045a3d23b009ee64dd8be87ed5df8de7e40ba&oauth_timestamp=1738667366&oauth_nonce=b61405fdc6eeea5974ccd2bd3fcb130fc506598d&oauth_signature_method=HMAC-SHA256&oauth_signature=NavPpUjmGH2JCVljcJIf8FjIYzv1VDOr7%2BGuJ5JpVug%3D
+    url: http://woocommercetest.local/wp-json/wc/v3/orders

@@ -1,7 +1,7 @@
 import json  # noqa: D100
 import os
 from pathlib import Path
-
+import yaml
 import responses
 from responses import _recorder
 
@@ -10,6 +10,7 @@ from woocommerce_pydantic.wcapi.models import wc_collections, wc_resources
 
 WC_URL = os.environ.get("TEST_WC_URL", "http://example.com")
 WC_API_URL = f"{WC_URL}/wp-json/wc/v3"
+
 
 # Currently tests do not use the API tokens as mocks using responses
 wcapi = API(
@@ -22,43 +23,54 @@ wcapi = API(
 # Get the local directory of the current file
 CURRENT_DIRECTORY = os.path.dirname(os.path.abspath(__file__))
 
-def get_response_filename(endpoint) -> str:
-    underscore_filename = endpoint.lstrip("/").replace("/", "_")
-    return f"data/responses/v3/{underscore_filename}.json"
+def load_recorded_response_json(yaml_file: str) -> dict | None:
+    """Load the data from the recorded API response for comparison."""
+    with open(yaml_file) as f:
+        data = yaml.safe_load(f)
+        if "responses" in data and data["responses"]:
+            return json.loads(data["responses"][0]["response"]["body"])
+        raise ValueError(f"No recorded data for request '{yaml_file}'")
 
-def mock_wcapi_get(endpoint: str) -> dict:
-    """
-    Add a mock endpoint using responses.
+def _recfile(name):
+    """Return path of recorded response file."""
+    # eg tests/data/responses/v3/order.yaml
+    return f"tests/data/responses/v3/{name}.yaml"
 
-    Reads a JSON file corresponding to the given endpoint from the
-    "data/responses/v3/" directory.
-    Uses the `responses` library to mock a GET request to the WooCommerce API URL with the loaded JSON data.
+# def get_response_filename(endpoint) -> str:
+#     underscore_filename = endpoint.lstrip("/").replace("/", "_")
+#     return f"data/responses/v3/{underscore_filename}.json"
+#     """
+#     Add a mock endpoint using responses.
 
-    Args:
-        endpoint (str): The endpoint to mock. This should be the name of the JSON
-                        file (without the .json extension) located in the
-                        "data/responses/v3/" directory.
+#     Reads a JSON file corresponding to the given endpoint from the
+#     "data/responses/v3/" directory.
+#     Uses the `responses` library to mock a GET request to the WooCommerce API URL with the loaded JSON data.
 
-    Returns:
-        dict: The JSON data loaded from the file.
+#     Args:
+#         endpoint (str): The endpoint to mock. This should be the name of the JSON
+#                         file (without the .json extension) located in the
+#                         "data/responses/v3/" directory.
 
-    """
+#     Returns:
+#         dict: The JSON data loaded from the file.
 
-    with (Path(CURRENT_DIRECTORY) / get_response_filename(endpoint)).open() as f:
-        data = json.load(f)
-    responses.add(
-        responses.GET,
-        f"{WC_API_URL}/{endpoint}",
-        json=data,
-        status=200,
-    )
-    return data
+#     """
+
+#     with (Path(CURRENT_DIRECTORY) / get_response_filename(endpoint)).open() as f:
+#         data = json.load(f)
+#     responses.add(
+#         responses.GET,
+#         f"{WC_API_URL}/{endpoint}",
+#         json=data,
+#         status=200,
+#     )
+#     return data
 
 @responses.activate
+# delete url params from yaml file
 # @_recorder.record(file_path="tests/data/responses/v3/orders.yaml")
 def test_get_orders():
     """Test that a request to endpoint "orders" returns validated ShopOrderList instance."""
-    # orders_data = mock_wcapi_get("orders")  # noqa: F841
     responses._add_from_file(file_path="tests/data/responses/v3/orders.yaml")
     # Call the WooCommerce API
     response = wcapi.get("orders")
@@ -96,15 +108,22 @@ def test_get_orders():
     assert isinstance(first_collection_item, wc_resources.WooCommerceResource)
 
 
+
+
 @responses.activate
+# @_recorder.record(file_path=_recfile("order"))
 def test_get_order():
-    # "/orders/{id}": wc_resources.ShopOrder,
-    order_id = 123
-    order_data = mock_wcapi_get(f"orders/{order_id}")
+    """/orders/{id}: wc_resources.ShopOrder"""  # noqa: D400, D415
+    recorded_response = _recfile("order")
+    responses._add_from_file(file_path=recorded_response)
+    order_data = load_recorded_response_json(recorded_response)
+
+    order_id = 77
     response = wcapi.get(f"orders/{order_id}")
+    assert response.status_code == 200
     order = response.data()
     assert isinstance(order, wc_resources.ShopOrder)
-    assert order_data["id"] == order.id
+    assert order.id == order_data["id"]
 
 # @responses.activate
 # def test_get_coupons():
