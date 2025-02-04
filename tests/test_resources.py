@@ -3,6 +3,7 @@ import os
 from pathlib import Path
 
 import responses
+from responses import _recorder
 
 from woocommerce_pydantic.wcapi.wc_api import API
 from woocommerce_pydantic.wcapi.models import wc_collections, wc_resources
@@ -54,10 +55,11 @@ def mock_wcapi_get(endpoint: str) -> dict:
     return data
 
 @responses.activate
+# @_recorder.record(file_path="tests/data/responses/v3/orders.yaml")
 def test_get_orders():
     """Test that a request to endpoint "orders" returns validated ShopOrderList instance."""
-    orders_data = mock_wcapi_get("orders")  # noqa: F841
-
+    # orders_data = mock_wcapi_get("orders")  # noqa: F841
+    responses._add_from_file(file_path="tests/data/responses/v3/orders.yaml")
     # Call the WooCommerce API
     response = wcapi.get("orders")
     response_json = response.json()
