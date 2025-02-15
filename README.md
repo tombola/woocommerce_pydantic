@@ -4,6 +4,8 @@
 
 This package is a wrapper around the [woocommerce](https://pypi.org/project/WooCommerce/) package.
 
+The main addition from this package is adding a `data()` method to the response which turns validated pydantic models instead of JSON.
+
 ## Features
 
 - Pydantic models for various WooCommerce API endpoints
